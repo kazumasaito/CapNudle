@@ -14,6 +14,7 @@
 		1212FA5E1DDE8FB9005AD383 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1212FA5C1DDE8FB9005AD383 /* LaunchScreen.storyboard */; };
 		1212FA691DDE8FB9005AD383 /* CapNudleAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1212FA681DDE8FB9005AD383 /* CapNudleAppTests.swift */; };
 		1212FA741DDE8FB9005AD383 /* CapNudleAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1212FA731DDE8FB9005AD383 /* CapNudleAppUITests.swift */; };
+		12550F491DDE981000EA2ED9 /* TopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12550F481DDE981000EA2ED9 /* TopViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		1212FA6F1DDE8FB9005AD383 /* CapNudleAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CapNudleAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1212FA731DDE8FB9005AD383 /* CapNudleAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapNudleAppUITests.swift; sourceTree = "<group>"; };
 		1212FA751DDE8FB9005AD383 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		12550F481DDE981000EA2ED9 /* TopViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 				1212FA5A1DDE8FB9005AD383 /* Assets.xcassets */,
 				1212FA5C1DDE8FB9005AD383 /* LaunchScreen.storyboard */,
 				1212FA5F1DDE8FB9005AD383 /* Info.plist */,
+				12550F481DDE981000EA2ED9 /* TopViewController.swift */,
 			);
 			path = CapNudleApp;
 			sourceTree = "<group>";
@@ -260,6 +263,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				12550F491DDE981000EA2ED9 /* TopViewController.swift in Sources */,
 				1212FA561DDE8FB9005AD383 /* ViewController.swift in Sources */,
 				1212FA541DDE8FB9005AD383 /* AppDelegate.swift in Sources */,
 			);
@@ -508,6 +512,7 @@
 				1212FA7A1DDE8FB9005AD383 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1212FA7B1DDE8FB9005AD383 /* Build configuration list for PBXNativeTarget "CapNudleAppTests" */ = {
 			isa = XCConfigurationList;
@@ -516,6 +521,7 @@
 				1212FA7D1DDE8FB9005AD383 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1212FA7E1DDE8FB9005AD383 /* Build configuration list for PBXNativeTarget "CapNudleAppUITests" */ = {
 			isa = XCConfigurationList;
@@ -524,6 +530,7 @@
 				1212FA801DDE8FB9005AD383 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
