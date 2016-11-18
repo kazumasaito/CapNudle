@@ -43,8 +43,14 @@ class ViewController: UIViewController {
                                     self.logoImageView.alpha = 0
         }, completion: { (Bool) in
             self.logoImageView.removeFromSuperview()
+            self.changeViewController()
         })        
     }
-
+    
+    func changeViewController() {
+        let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let nextView = storyboard.instantiateViewController(withIdentifier: "Top") as! TopViewController
+        self.present(nextView, animated: false, completion: nil)
+    }
 }
 
