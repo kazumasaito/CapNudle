@@ -17,8 +17,15 @@ class TopViewController: UIViewController,AVCaptureMetadataOutputObjectsDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        view.backgroundColor = UIColor.black
+        self.setCameraView()
+    }
+    
+    @IBAction func onClickCameraButton(_ sender: Any) {
+        self.setCameraView()
+    }
+    
+    func setCameraView() {
+        //view.backgroundColor = UIColor.black
         captureSession = AVCaptureSession()
         
         let videoCaptureDevice = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo)
@@ -87,14 +94,48 @@ class TopViewController: UIViewController,AVCaptureMetadataOutputObjectsDelegate
             let readableObject = metadataObject as! AVMetadataMachineReadableCodeObject;
                         
             AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
-            found(code: readableObject.stringValue);
+            self.found(code: readableObject.stringValue);
         }
         
         //dismiss(animated: true)
+        previewLayer.removeFromSuperlayer()
     }
     
     func found(code: String) {
         print(code)
+        
+        // Labelを作成.
+        let myLabel: UILabel = UILabel(frame:CGRect(origin:CGPoint(x:0,y:0),size:CGSize(width:200,height:50)))
+        
+        // 背景をオレンジ色にする.
+        myLabel.backgroundColor = UIColor.orange
+        
+        // 枠を丸くする.
+        myLabel.layer.masksToBounds = true
+        
+        // コーナーの半径.
+        myLabel.layer.cornerRadius = 20.0
+        
+        // Labelに文字を代入.
+        myLabel.text = code
+        
+        // 文字の色を白にする.
+        myLabel.textColor = UIColor.white
+        
+        // 文字の影の色をグレーにする.
+        myLabel.shadowColor = UIColor.gray
+        
+        // Textを中央寄せにする.
+        myLabel.textAlignment = NSTextAlignment.center
+        
+        // 配置する座標を設定する.
+        myLabel.layer.position = CGPoint(x: self.view.bounds.width/2,y: 200)
+        
+        // Viewの背景色を青にする.
+        self.view.backgroundColor = UIColor.cyan
+        
+        // ViewにLabelを追加.
+        self.view.addSubview(myLabel)
     }
     
     override var prefersStatusBarHidden: Bool {
