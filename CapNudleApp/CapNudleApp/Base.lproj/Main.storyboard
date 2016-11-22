@@ -75,12 +75,38 @@
                     <view key="view" contentMode="scaleToFill" id="4Lq-7N-jSt">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Y3w-am-MG7">
+                                <rect key="frame" x="71" y="84" width="233" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="ふつう"/>
+                                    <segment title="やわめ"/>
+                                    <segment title="かため"/>
+                                </segments>
+                                <connections>
+                                    <action selector="changeKatasa:" destination="JnY-sz-C9J" eventType="valueChanged" id="4Hz-J1-WMa"/>
+                                </connections>
+                            </segmentedControl>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0kb-Vg-IDA">
+                                <rect key="frame" x="116" y="566" width="143" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="タイマースタート"/>
+                                <connections>
+                                    <action selector="onClickStart:" destination="JnY-sz-C9J" eventType="touchUpInside" id="gMb-qS-rm5"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="selectedKatasa" destination="Y3w-am-MG7" id="qob-QN-sPz"/>
+                        <outlet property="startButton" destination="0kb-Vg-IDA" id="kyK-Ci-668"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xej-zw-c3T" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1739" y="142"/>
+            <point key="canvasLocation" x="1877.5999999999999" y="138.98050974512745"/>
         </scene>
     </scenes>
     <resources>
