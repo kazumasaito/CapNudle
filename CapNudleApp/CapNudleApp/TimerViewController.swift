@@ -36,6 +36,10 @@ class TimerViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func changeKatasa(_ sender: Any) {
+        //print(selectedKatasa.titleForSegment(at: selectedKatasa.selectedSegmentIndex)!)
+        //print(selectedKatasa.selectedSegmentIndex)
+    }
     
     @IBAction func onClickStart(_ sender: Any) {
         self.startButton.isEnabled = false
@@ -44,8 +48,11 @@ class TimerViewController: UIViewController {
     }
     
     func httpRequest() {
+        
         self.JANCodeString = "49698633"
-        let url = URL(string:"http://27.120.120.174/NoodleApp/Index.php?jan_code=\(self.JANCodeString!)&katasa=\(self.katasa)")
+        let url = URL(string:"http://27.120.120.174/NoodleApp/Index.php?jan_code=\(self.JANCodeString!)&katasa=\(self.katasa!)")
+        
+        print(url)
         
         let task = URLSession.shared.dataTask(with: url!){ data, response, error in
             OperationQueue.main.addOperation {

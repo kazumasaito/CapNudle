@@ -85,7 +85,7 @@
                                     <segment title="かため"/>
                                 </segments>
                                 <connections>
-                                    <action selector="changeKatasa:" destination="JnY-sz-C9J" eventType="valueChanged" id="4Hz-J1-WMa"/>
+                                    <action selector="changeKatasa:" destination="JnY-sz-C9J" eventType="valueChanged" id="EnP-rD-boo"/>
                                 </connections>
                             </segmentedControl>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0kb-Vg-IDA">
