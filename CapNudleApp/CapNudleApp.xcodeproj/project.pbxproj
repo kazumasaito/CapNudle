@@ -16,6 +16,8 @@
 		1212FA741DDE8FB9005AD383 /* CapNudleAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1212FA731DDE8FB9005AD383 /* CapNudleAppUITests.swift */; };
 		12550F491DDE981000EA2ED9 /* TopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12550F481DDE981000EA2ED9 /* TopViewController.swift */; };
 		12550F4C1DDE9DA800EA2ED9 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12550F4B1DDE9DA800EA2ED9 /* AVFoundation.framework */; };
+		12550F4E1DE2F97900EA2ED9 /* NetworkInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12550F4D1DE2F97900EA2ED9 /* NetworkInfo.swift */; };
+		12550F521DE3ECA800EA2ED9 /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12550F511DE3ECA800EA2ED9 /* TimerViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +53,9 @@
 		1212FA751DDE8FB9005AD383 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		12550F481DDE981000EA2ED9 /* TopViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopViewController.swift; sourceTree = "<group>"; };
 		12550F4B1DDE9DA800EA2ED9 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		12550F4D1DE2F97900EA2ED9 /* NetworkInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkInfo.swift; sourceTree = "<group>"; };
+		12550F501DE3DD7400EA2ED9 /* CapNudleApp_Bridging_Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CapNudleApp_Bridging_Header.h; sourceTree = "<group>"; };
+		12550F511DE3ECA800EA2ED9 /* TimerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +115,9 @@
 				1212FA5C1DDE8FB9005AD383 /* LaunchScreen.storyboard */,
 				1212FA5F1DDE8FB9005AD383 /* Info.plist */,
 				12550F481DDE981000EA2ED9 /* TopViewController.swift */,
+				12550F4D1DE2F97900EA2ED9 /* NetworkInfo.swift */,
+				12550F501DE3DD7400EA2ED9 /* CapNudleApp_Bridging_Header.h */,
+				12550F511DE3ECA800EA2ED9 /* TimerViewController.swift */,
 			);
 			path = CapNudleApp;
 			sourceTree = "<group>";
@@ -275,8 +283,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				12550F521DE3ECA800EA2ED9 /* TimerViewController.swift in Sources */,
 				12550F491DDE981000EA2ED9 /* TopViewController.swift in Sources */,
 				1212FA561DDE8FB9005AD383 /* ViewController.swift in Sources */,
+				12550F4E1DE2F97900EA2ED9 /* NetworkInfo.swift in Sources */,
 				1212FA541DDE8FB9005AD383 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -434,6 +444,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = jp.co.crooz.CapNudleApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/saitokazuma/swift-project/CapNudleApp/CapNudleApp/CapNudleApp/CapNudleApp_Bridging_Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -447,6 +458,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = jp.co.crooz.CapNudleApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/saitokazuma/swift-project/CapNudleApp/CapNudleApp/CapNudleApp/CapNudleApp_Bridging_Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

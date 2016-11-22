@@ -15,12 +15,11 @@ class TopViewController: UIViewController,AVCaptureMetadataOutputObjectsDelegate
     var captureSession: AVCaptureSession!
     var previewLayer: AVCaptureVideoPreviewLayer!
     
+    var JANCode:String!
+    var ipAddr:String!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setCameraView()
-    }
-    
-    @IBAction func onClickCameraButton(_ sender: Any) {
         self.setCameraView()
     }
     
@@ -97,13 +96,13 @@ class TopViewController: UIViewController,AVCaptureMetadataOutputObjectsDelegate
             self.found(code: readableObject.stringValue);
         }
         
-        //dismiss(animated: true)
         previewLayer.removeFromSuperlayer()
     }
     
-    func found(code: String) {
-        print(code)
-        
+    func found(code: String) {        
+        self.JANCode = code
+        self.ipAddr = NetworkInfo().getWiFiAddress()!
+                
         // Labelを作成.
         let myLabel: UILabel = UILabel(frame:CGRect(origin:CGPoint(x:0,y:0),size:CGSize(width:200,height:50)))
         
@@ -136,6 +135,8 @@ class TopViewController: UIViewController,AVCaptureMetadataOutputObjectsDelegate
         
         // ViewにLabelを追加.
         self.view.addSubview(myLabel)
+        
+        self.changeViewController()
     }
     
     override var prefersStatusBarHidden: Bool {
@@ -145,4 +146,13 @@ class TopViewController: UIViewController,AVCaptureMetadataOutputObjectsDelegate
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return .portrait
     }
+    
+    func changeViewController() {
+        let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let nextView = storyboard.instantiateViewController(withIdentifier: "Timer") as! TimerViewController
+        nextView.ipAddrString = self.ipAddr
+        nextView.JANCodeString = self.JANCode
+        self.present(nextView, animated: false, completion: nil)
+    }
+
 }
