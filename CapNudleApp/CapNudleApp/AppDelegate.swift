@@ -7,15 +7,38 @@
 //
 
 import UIKit
+import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        if #available(iOS 10.0, *) {
+            // iOS 10
+            let center = UNUserNotificationCenter.current()
+            center.delegate = self
+            center.requestAuthorization(options: [.badge, .sound, .alert], completionHandler: { (granted, error) in
+                if error != nil {
+                    return
+                }
+                
+                if granted {
+                    debugPrint("通知許可")
+                } else {
+                    debugPrint("通知拒否")
+                }
+            })
+            
+        } else {
+            // iOS 9
+            let settings = UIUserNotificationSettings(types: [.badge, .sound, .alert], categories: nil)
+            UIApplication.shared.registerUserNotificationSettings(settings)
+        }
+
         return true
     }
 
@@ -45,9 +68,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         print("applicationWillTerminate")
         NotificationCenter.default.post(name: Notification.Name(rawValue:"applicationWillTerminate"), object: nil)
-
     }
-
-
+    
 }
 
+// MARK: - UNUserNotificationCenterDelegate
+extension AppDelegate: UNUserNotificationCenterDelegate {
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: () -> Void) {
+        
+        completionHandler()
+    }
+    
+    // フォアグラウンドで通知受信
+    @available(iOS 10.0, *)
+    func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                willPresent notification: UNNotification,
+                                withCompletionHandler completionHandler: (UNNotificationPresentationOptions) -> Void) {
+        
+        print("！！！ローカル通知検出（フォアグラウンド）")
+    }
+}

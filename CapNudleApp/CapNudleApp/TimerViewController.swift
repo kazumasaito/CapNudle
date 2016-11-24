@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import UserNotifications
 
 @objc
 class TimerViewController: UIViewController {
@@ -41,7 +42,6 @@ class TimerViewController: UIViewController {
     }
     
     func setNotification() {
-        
         let notificationCenter = NotificationCenter.default
         
         notificationCenter.addObserver(
@@ -71,15 +71,12 @@ class TimerViewController: UIViewController {
     
     //バックグラウンドに行った時
     func onEnterBackground() {
-        print("background")
         let time:Int = Int(NSDate().timeIntervalSince1970)
         userDefaults.set(time, forKey: "waitTime")
     }
     
     //フォアグラウンドに戻ってきた時
     func onEnterForgound() {
-        print("forground")
-        
         let time:Int = Int(userDefaults.integer(forKey: "waitTime"))
         let now:Int = Int(NSDate().timeIntervalSince1970)
         let delay:Float = Float(now - time)
@@ -89,13 +86,32 @@ class TimerViewController: UIViewController {
     
     //アプリ終了時
     func onTerminate() {
-        print("app kill")
         userDefaults.removeObject(forKey: "waitTime")
+        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["CompleteNotification"])
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    //ローカル通知設定
+    func setLocalPush() {
+        let content = UNMutableNotificationContent()
+        content.title = "☆★☆完成☆★☆"
+        //content.subtitle  = "最高の1日！"
+        content.body = "冷めないうちに早く食べよ〜！"
+        content.sound = UNNotificationSound.default()
+        
+        /* 時間指定 */
+        // UNCalendarNotificationTriggerを作成
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: TimeInterval(self.waitTime), repeats: false)
+        
+        // id, content, triggerからUNNotificationRequestを作成
+        let request = UNNotificationRequest.init(identifier: "CompleteNotification", content: content, trigger: trigger)
+        
+        // UNUserNotificationCenterにrequestを追加
+        UNUserNotificationCenter.current().add(request)
     }
     
     @IBAction func changeKatasa(_ sender: Any) {
@@ -110,11 +126,9 @@ class TimerViewController: UIViewController {
     }
     
     func httpRequest() {
-        
+        //TODO::あとで消す↓
         self.JANCodeString = "49698633"
         let url = URL(string:"http://27.120.120.174/NoodleApp/Index.php?jan_code=\(self.JANCodeString!)&katasa=\(self.katasa!)")
-        
-        print(url)
         
         let task = URLSession.shared.dataTask(with: url!){ data, response, error in
             OperationQueue.main.addOperation {
@@ -131,8 +145,6 @@ class TimerViewController: UIViewController {
         do {
             let parsedData = try JSONSerialization.jsonObject(with: data!, options: []) as! [String: Any]
             
-            print(parsedData)
-            
             let size:String = parsedData["men_size"] as! String!
             let type:String = parsedData["men_type"] as! String!
             let time:String = parsedData["wait_time"] as! String!
@@ -142,6 +154,7 @@ class TimerViewController: UIViewController {
             self.waitTime = Float(time)!
             
             self.startTimer()
+            self.setLocalPush()
             
         } catch let error as NSError {
             //ユーザーデータが存在しない場合
@@ -172,7 +185,6 @@ class TimerViewController: UIViewController {
     
     //NSTimerIntervalで指定された秒数毎に呼び出されるメソッド.
     func onUpdate(timer : Timer){
-        
         self.waitTime -= 0.1
         
         //桁数を指定して文字列を作る.
