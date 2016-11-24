@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 
+@objc
 class TimerViewController: UIViewController {
     var ipAddrString:String!
     var JANCodeString:String!
@@ -19,6 +20,8 @@ class TimerViewController: UIViewController {
     var waitTime:Float = 0.0
     
     var timer:Timer!
+    
+    let userDefaults = UserDefaults.standard
     
     @IBOutlet weak var selectedKatasa: UISegmentedControl!
     @IBOutlet weak var startButton: UIButton!
@@ -32,7 +35,62 @@ class TimerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.setNotification()
+
         self.setTimer()
+    }
+    
+    func setNotification() {
+        
+        let notificationCenter = NotificationCenter.default
+        
+        notificationCenter.addObserver(
+            forName:Notification.Name(rawValue:"applicationDidEnterBackground"),
+            object:nil, queue:nil) {
+                notification in
+                // Handle notification
+                self.onEnterBackground()
+        }
+        
+        notificationCenter.addObserver(
+            forName:Notification.Name(rawValue:"applicationWillEnterForeground"),
+            object:nil, queue:nil) {
+                notification in
+                // Handle notification
+                self.onEnterForgound()
+        }
+        
+        notificationCenter.addObserver(
+            forName:Notification.Name(rawValue:"applicationWillTerminate"),
+            object:nil, queue:nil) {
+                notification in
+                // Handle notification
+                self.onTerminate()
+        }
+    }
+    
+    //バックグラウンドに行った時
+    func onEnterBackground() {
+        print("background")
+        let time:Int = Int(NSDate().timeIntervalSince1970)
+        userDefaults.set(time, forKey: "waitTime")
+    }
+    
+    //フォアグラウンドに戻ってきた時
+    func onEnterForgound() {
+        print("forground")
+        
+        let time:Int = Int(userDefaults.integer(forKey: "waitTime"))
+        let now:Int = Int(NSDate().timeIntervalSince1970)
+        let delay:Float = Float(now - time)
+        
+        self.waitTime -= delay
+    }
+    
+    //アプリ終了時
+    func onTerminate() {
+        print("app kill")
+        userDefaults.removeObject(forKey: "waitTime")
     }
     
     override func didReceiveMemoryWarning() {
@@ -89,7 +147,6 @@ class TimerViewController: UIViewController {
             //ユーザーデータが存在しない場合
             print("Failed to load: \(error.localizedDescription)")
         }
-        
     }
     
     func setTimer() {
