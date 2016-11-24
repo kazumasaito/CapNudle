@@ -18,6 +18,8 @@ class TimerViewController: UIViewController {
     var menType:Int = 0
     var waitTime:Float = 0.0
     
+    var timer:Timer!
+    
     @IBOutlet weak var selectedKatasa: UISegmentedControl!
     @IBOutlet weak var startButton: UIButton!
     
@@ -29,6 +31,8 @@ class TimerViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.setTimer()
     }
     
     override func didReceiveMemoryWarning() {
@@ -79,7 +83,7 @@ class TimerViewController: UIViewController {
             self.menType  = Int(type)!
             self.waitTime = Float(time)!
             
-            self.setTimer()
+            self.startTimer()
             
         } catch let error as NSError {
             //ユーザーデータが存在しない場合
@@ -101,9 +105,12 @@ class TimerViewController: UIViewController {
         myLabel.layer.position = CGPoint(x: self.view.bounds.width/2,y: self.view.bounds.height/2)
         self.view.backgroundColor = UIColor.cyan
         self.view.addSubview(myLabel)
-        
+    }
+    
+    func startTimer() {
         //タイマーを作る.
-        Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(TimerViewController.onUpdate(timer:)), userInfo: nil, repeats: true)
+        myLabel.text = "Time:\(self.waitTime)"
+        timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(TimerViewController.onUpdate(timer:)), userInfo: nil, repeats: true)
     }
     
     //NSTimerIntervalで指定された秒数毎に呼び出されるメソッド.
@@ -115,5 +122,11 @@ class TimerViewController: UIViewController {
         let str = "Time:".appendingFormat("%.1f",self.waitTime)
         
         myLabel.text = str
+        
+        if (self.waitTime <= 0) {
+            //タイマー破棄
+            timer.invalidate()
+            myLabel.text = "完成しました！！"
+        }
     }
 }
