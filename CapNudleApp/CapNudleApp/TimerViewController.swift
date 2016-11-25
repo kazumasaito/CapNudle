@@ -168,7 +168,7 @@ class TimerViewController: UIViewController {
         myLabel.backgroundColor = UIColor.orange
         myLabel.layer.masksToBounds = true
         myLabel.layer.cornerRadius = 20.0
-        myLabel.text = "Time:\(self.waitTime)"
+        myLabel.text = "\(self.waitTime)秒"
         myLabel.textColor = UIColor.white
         myLabel.shadowColor = UIColor.gray
         myLabel.textAlignment = NSTextAlignment.center
@@ -179,7 +179,7 @@ class TimerViewController: UIViewController {
     
     func startTimer() {
         //タイマーを作る.
-        myLabel.text = "Time:\(self.waitTime)"
+        myLabel.text = "\(self.waitTime)秒"
         timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(TimerViewController.onUpdate(timer:)), userInfo: nil, repeats: true)
     }
     
@@ -188,7 +188,8 @@ class TimerViewController: UIViewController {
         self.waitTime -= 0.1
         
         //桁数を指定して文字列を作る.
-        let str = "Time:".appendingFormat("%.1f",self.waitTime)
+        //let str = "Time:".appendingFormat("%.1f",self.waitTime)
+        let str = "\(String(format:"%.1f",self.waitTime))秒"
         
         myLabel.text = str
         
