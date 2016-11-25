@@ -126,8 +126,8 @@ class TimerViewController: UIViewController {
     }
     
     func httpRequest() {
-        //TODO::あとで消す↓
-        self.JANCodeString = "49698633"
+        //!!!::デバック用↓
+        //self.JANCodeString = "49698633"
         let url = URL(string:"http://27.120.120.174/NoodleApp/Index.php?jan_code=\(self.JANCodeString!)&katasa=\(self.katasa!)")
         
         let task = URLSession.shared.dataTask(with: url!){ data, response, error in
@@ -145,9 +145,17 @@ class TimerViewController: UIViewController {
         do {
             let parsedData = try JSONSerialization.jsonObject(with: data!, options: []) as! [String: Any]
             
-            let size:String = parsedData["men_size"] as! String!
-            let type:String = parsedData["men_type"] as! String!
-            let time:String = parsedData["wait_time"] as! String!
+            let status:String = parsedData["status"] as! String!
+            
+            //データなし
+            if (status == "INSERT FAILED") {
+                self.showAlertView()
+                return
+            }
+            
+            let size:String   = parsedData["men_size"] as! String!
+            let type:String   = parsedData["men_type"] as! String!
+            let time:String   = parsedData["wait_time"] as! String!
             
             self.menSize  = Int(size)!
             self.menType  = Int(type)!
@@ -160,6 +168,27 @@ class TimerViewController: UIViewController {
             //ユーザーデータが存在しない場合
             print("Failed to load: \(error.localizedDescription)")
         }
+    }
+    
+    func showAlertView() {
+        let alert: UIAlertController = UIAlertController(title: "！！！", message: "商品データが存在しません", preferredStyle:  UIAlertControllerStyle.alert)
+        
+        let defaultAction: UIAlertAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler:{
+            // ボタンが押された時の処理を書く（クロージャ実装）
+            (action: UIAlertAction!) -> Void in
+            print("OK")
+            self.changeViewController()
+        })
+        
+        alert.addAction(defaultAction)
+        
+        present(alert, animated: true, completion: nil)
+    }
+    
+    func changeViewController() {
+        let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let nextView = storyboard.instantiateViewController(withIdentifier: "Top") as! TopViewController
+        self.present(nextView, animated: false, completion: nil)
     }
     
     func setTimer() {
