@@ -18,6 +18,7 @@
 		12550F4C1DDE9DA800EA2ED9 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12550F4B1DDE9DA800EA2ED9 /* AVFoundation.framework */; };
 		12550F4E1DE2F97900EA2ED9 /* NetworkInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12550F4D1DE2F97900EA2ED9 /* NetworkInfo.swift */; };
 		12550F521DE3ECA800EA2ED9 /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12550F511DE3ECA800EA2ED9 /* TimerViewController.swift */; };
+		12550F541DEED4F200EA2ED9 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12550F531DEED4F100EA2ED9 /* MessageUI.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,7 @@
 		12550F4D1DE2F97900EA2ED9 /* NetworkInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkInfo.swift; sourceTree = "<group>"; };
 		12550F501DE3DD7400EA2ED9 /* CapNudleApp_Bridging_Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CapNudleApp_Bridging_Header.h; sourceTree = "<group>"; };
 		12550F511DE3ECA800EA2ED9 /* TimerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
+		12550F531DEED4F100EA2ED9 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				12550F541DEED4F200EA2ED9 /* MessageUI.framework in Frameworks */,
 				12550F4C1DDE9DA800EA2ED9 /* AVFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -143,6 +146,7 @@
 		12550F4A1DDE9DA800EA2ED9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				12550F531DEED4F100EA2ED9 /* MessageUI.framework */,
 				12550F4B1DDE9DA800EA2ED9 /* AVFoundation.framework */,
 			);
 			name = Frameworks;

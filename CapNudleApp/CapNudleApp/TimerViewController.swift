@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import UserNotifications
+import MessageUI
 
 @objc
 class TimerViewController: UIViewController {
@@ -186,6 +187,39 @@ class TimerViewController: UIViewController {
         
         present(alert, animated: true, completion: nil)
     }
+    
+    /*
+    func showMailView() {
+        //メールが送信できるかどうかの確認は必ず必要
+        if mailComposeController.canSendMail() {
+            let e = mailComposeController()
+            e.mailComposeDelegate = self //delegateの設定
+            e.setToRecipients(["test@swift-study.com"]) //宛先アドレス
+            e.setCcRecipients(["cc@swift-study.com"]) //CCアドレス
+            e.setBccRecipients(["bcc@swift-study.com"]) //BCCアドレス
+            e.setSubject("テストサブジェクトです") //サブジェクト
+            e.setMessageBody("テスト本文です", isHTML: false) //メール本文
+            presentViewController(e, animated: true, completion: nil) //メール作成画面呼び出し
+        } else {
+            print("送信できません")
+        }
+    }
+    
+    func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
+        if result == MFMailComposeResultCancelled {
+            print("メール送信がキャンセルされました")
+        } else if result == MFMailComposeResultSaved {
+            print("下書きとして保存されました")
+        } else if result == MFMailComposeResultSent {
+            print("メール送信に成功しました")
+        } else if result == MFMailComposeResultFailed {
+            print("メール送信に失敗しました")
+        }
+        dismiss(animated: true, completion: nil) //閉じる
+        
+        self.changeViewController()
+    }
+    */
     
     func changeViewController() {
         let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
