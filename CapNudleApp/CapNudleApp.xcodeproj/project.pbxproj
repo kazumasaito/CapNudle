@@ -19,6 +19,7 @@
 		12550F4E1DE2F97900EA2ED9 /* NetworkInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12550F4D1DE2F97900EA2ED9 /* NetworkInfo.swift */; };
 		12550F521DE3ECA800EA2ED9 /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12550F511DE3ECA800EA2ED9 /* TimerViewController.swift */; };
 		12550F541DEED4F200EA2ED9 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12550F531DEED4F100EA2ED9 /* MessageUI.framework */; };
+		12550F561DEEF92900EA2ED9 /* AgreeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12550F551DEEF92900EA2ED9 /* AgreeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,7 @@
 		12550F501DE3DD7400EA2ED9 /* CapNudleApp_Bridging_Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CapNudleApp_Bridging_Header.h; sourceTree = "<group>"; };
 		12550F511DE3ECA800EA2ED9 /* TimerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
 		12550F531DEED4F100EA2ED9 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		12550F551DEEF92900EA2ED9 /* AgreeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AgreeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +123,7 @@
 				12550F4D1DE2F97900EA2ED9 /* NetworkInfo.swift */,
 				12550F501DE3DD7400EA2ED9 /* CapNudleApp_Bridging_Header.h */,
 				12550F511DE3ECA800EA2ED9 /* TimerViewController.swift */,
+				12550F551DEEF92900EA2ED9 /* AgreeViewController.swift */,
 			);
 			path = CapNudleApp;
 			sourceTree = "<group>";
@@ -292,6 +295,7 @@
 				1212FA561DDE8FB9005AD383 /* ViewController.swift in Sources */,
 				12550F4E1DE2F97900EA2ED9 /* NetworkInfo.swift in Sources */,
 				1212FA541DDE8FB9005AD383 /* AppDelegate.swift in Sources */,
+				12550F561DEEF92900EA2ED9 /* AgreeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

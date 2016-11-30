@@ -48,7 +48,22 @@ class ViewController: UIViewController {
     }
     
     func changeViewController() {
+        
         let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        let ud = UserDefaults.standard
+        if (ud.bool(forKey: "firstLaunch")) {
+            
+            //初回起動の処理
+            let firstView = storyboard.instantiateViewController(withIdentifier: "Agree") as! AgreeViewController
+            self.present(firstView, animated: false, completion: nil)
+            
+            ud.set(false, forKey: "firstLaunch")
+            
+            return
+        }
+        
+        //2回目以降の処理
         let nextView = storyboard.instantiateViewController(withIdentifier: "Top") as! TopViewController
         self.present(nextView, animated: false, completion: nil)
     }

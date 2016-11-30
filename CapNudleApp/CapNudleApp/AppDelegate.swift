@@ -17,6 +17,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
+        let ud = UserDefaults.standard
+        let dic = ["firstLaunch": true]
+        ud.register(defaults: dic)
+        
         if #available(iOS 10.0, *) {
             // iOS 10
             let center = UNUserNotificationCenter.current()
