@@ -101,7 +101,7 @@ class TopViewController: UIViewController,AVCaptureMetadataOutputObjectsDelegate
     
     func found(code: String) {        
         self.JANCode = code
-        self.ipAddr = NetworkInfo().getWiFiAddress()!
+        //self.ipAddr = NetworkInfo().getWiFiAddress()!
                 
         // Labelを作成.
         let myLabel: UILabel = UILabel(frame:CGRect(origin:CGPoint(x:0,y:0),size:CGSize(width:200,height:50)))

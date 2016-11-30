@@ -145,6 +145,8 @@ class TimerViewController: UIViewController {
         do {
             let parsedData = try JSONSerialization.jsonObject(with: data!, options: []) as! [String: Any]
             
+            print(parsedData)
+            
             let status:String = parsedData["status"] as! String!
             
             //データなし
@@ -194,15 +196,15 @@ class TimerViewController: UIViewController {
     func setTimer() {
         //ラベルを作る.
         myLabel = UILabel(frame: CGRect(origin:CGPoint(x:0,y:0), size:CGSize(width:200,height:50)))
-        myLabel.backgroundColor = UIColor.orange
+        myLabel.backgroundColor = UIColor.gray
         myLabel.layer.masksToBounds = true
         myLabel.layer.cornerRadius = 20.0
         myLabel.text = "\(self.waitTime)秒"
-        myLabel.textColor = UIColor.white
-        myLabel.shadowColor = UIColor.gray
+        myLabel.textColor = UIColor.black
+        myLabel.shadowColor = UIColor.darkGray
         myLabel.textAlignment = NSTextAlignment.center
         myLabel.layer.position = CGPoint(x: self.view.bounds.width/2,y: self.view.bounds.height/2)
-        self.view.backgroundColor = UIColor.cyan
+        self.view.backgroundColor = UIColor.white
         self.view.addSubview(myLabel)
     }
     
@@ -213,11 +215,10 @@ class TimerViewController: UIViewController {
     }
     
     //NSTimerIntervalで指定された秒数毎に呼び出されるメソッド.
-    func onUpdate(timer : Timer){
+    func onUpdate(timer : Timer) {
         self.waitTime -= 0.1
         
         //桁数を指定して文字列を作る.
-        //let str = "Time:".appendingFormat("%.1f",self.waitTime)
         let str = "\(String(format:"%.1f",self.waitTime))秒"
         
         myLabel.text = str
